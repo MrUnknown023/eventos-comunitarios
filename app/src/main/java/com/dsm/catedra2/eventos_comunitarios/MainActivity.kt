@@ -7,12 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.dsm.catedra2.eventos_comunitarios.repository.FirebaseAuthRepository
+import com.dsm.catedra2.eventos_comunitarios.repository.MockCommentRepository
 import com.dsm.catedra2.eventos_comunitarios.repository.MockEventRepository
 import com.dsm.catedra2.eventos_comunitarios.ui.theme.EventoscomunitariosTheme
 import com.dsm.catedra2.eventos_comunitarios.view.EventDetailScreen
 import com.dsm.catedra2.eventos_comunitarios.view.LoginScreen
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.AuthState
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.AuthViewModel
+import com.dsm.catedra2.eventos_comunitarios.viewmodel.CommentViewModel
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.EventViewModel
 
 class MainActivity : ComponentActivity() {
@@ -22,6 +24,9 @@ class MainActivity : ComponentActivity() {
 
         val eventRepository = MockEventRepository()
         val eventViewModel = EventViewModel(eventRepository)
+
+        val commentRepository = MockCommentRepository()
+        val commentViewModel = CommentViewModel(commentRepository)
 
         val authRepository = FirebaseAuthRepository()
         val authViewModel = AuthViewModel(authRepository)
@@ -37,7 +42,9 @@ class MainActivity : ComponentActivity() {
                     is AuthState.Authenticated -> {
                         EventDetailScreen(
                             viewModel = eventViewModel,
+                            commentViewModel = commentViewModel,
                             currentUserId = state.userId,
+                            currentUserEmail = state.email,
                             currentUserRole = state.role, // Le pasamos el rol
                             onLogoutClick = { authViewModel.logout() }
                         )

@@ -15,7 +15,7 @@ Aplicación móvil diseñada para la gestión, organización y participación en
 * **Visualización (Implementado):** Los usuarios regulares pueden explorar la lista de eventos comunitarios de forma reactiva.
 * **Participación y Notificaciones (Pendiente):** Desarrollo del sistema para que los usuarios confirmen su asistencia (RSVP) y reciban alertas sobre cambios o recordatorios.
 
-### 3. Interacción Social (💬 Pendiente)
+### 3. Interacción Social (💬 Implementado)
 * **Comentarios y Calificaciones:** Módulo para que los asistentes dejen feedback valorativo en eventos finalizados.
 * **Compartir:** Integración de intenciones (Intents) para compartir los eventos en redes sociales externas y mediante correo electrónico.
 
