@@ -11,7 +11,7 @@ Aplicación móvil diseñada para la gestión, organización y participación en
 
 ### 2. Gestión de Eventos (📅 Parcialmente Implementado)
 * **CRUD de Eventos (Implementado):** Los Organizadores pueden crear, actualizar y eliminar eventos (título, descripción, lugar) almacenados en tiempo real en la nube.
-* Agregar ingreso de fecha en formulario para el ingreso de eventos.
+* Agregar ingreso de fecha en formulario para el ingreso de eventos. (⏱️ Pendiente)
 * **Visualización (Implementado):** Los usuarios regulares pueden explorar la lista de eventos comunitarios de forma reactiva.
 * **Participación y Notificaciones (Pendiente):** Desarrollo del sistema para que los usuarios confirmen su asistencia (RSVP) y reciban alertas sobre cambios o recordatorios.
 
