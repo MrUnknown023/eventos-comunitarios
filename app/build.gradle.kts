@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -40,6 +41,20 @@ android {
 }
 
 dependencies {
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:34.13.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    // Para usar el ViewModel en Compose (si usan Compose)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    // Para recolectar Flows en la UI de forma segura
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+    implementation("androidx.compose.material:material-icons-extended")
+    //LogIn con google
+    implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

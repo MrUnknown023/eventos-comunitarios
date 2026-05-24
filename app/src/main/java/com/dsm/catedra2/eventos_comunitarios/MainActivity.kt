@@ -4,44 +4,52 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import com.dsm.catedra2.eventos_comunitarios.repository.FirebaseAuthRepository
+import com.dsm.catedra2.eventos_comunitarios.repository.MockEventRepository
 import com.dsm.catedra2.eventos_comunitarios.ui.theme.EventoscomunitariosTheme
+import com.dsm.catedra2.eventos_comunitarios.view.EventDetailScreen
+import com.dsm.catedra2.eventos_comunitarios.view.LoginScreen
+import com.dsm.catedra2.eventos_comunitarios.viewmodel.AuthState
+import com.dsm.catedra2.eventos_comunitarios.viewmodel.AuthViewModel
+import com.dsm.catedra2.eventos_comunitarios.viewmodel.EventViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val eventRepository = MockEventRepository()
+        val eventViewModel = EventViewModel(eventRepository)
+
+        val authRepository = FirebaseAuthRepository()
+        val authViewModel = AuthViewModel(authRepository)
+
+        // Verifica si ya hay un token o sesión guardada en el dispositivo
+        authViewModel.checkSession()
+
         setContent {
             EventoscomunitariosTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                val authState by authViewModel.authState.collectAsState()
+
+                when (val state = authState) {
+                    is AuthState.Authenticated -> {
+                        EventDetailScreen(
+                            viewModel = eventViewModel,
+                            currentUserId = state.userId,
+                            currentUserRole = state.role, // Le pasamos el rol
+                            onLogoutClick = { authViewModel.logout() }
+                        )
+                    }
+                    else -> {
+                        LoginScreen(
+                            viewModel = authViewModel,
+                            onLoginSuccess = { }
+                        )
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EventoscomunitariosTheme {
-        Greeting("Android")
     }
 }
