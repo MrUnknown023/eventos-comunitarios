@@ -17,6 +17,7 @@ import com.dsm.catedra2.eventos_comunitarios.viewmodel.AuthViewModel
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.CommentViewModel
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.EventViewModel
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
