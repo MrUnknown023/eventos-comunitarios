@@ -53,6 +53,7 @@ dependencies {
     // Para recolectar Flows en la UI de forma segura
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
     //LogIn con google
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation(platform(libs.androidx.compose.bom))
