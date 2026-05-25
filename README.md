@@ -1,34 +1,102 @@
 # Eventos Comunitarios 🏙️
 
 Aplicación móvil diseñada para la gestión, organización y participación en eventos comunitarios.
-
-## 📋 Características y Estado del Proyecto
-
-### 1. Autenticación (🛡️ Implementado)
-* **Registro y Acceso:** Sistema de login mediante correo electrónico y contraseña gestionado a través de Firebase Authentication.
-* **Redes Sociales:** Integración con Google Sign-In para un acceso rápido y seguro.
-* **Control de Roles (RBAC):** Diferenciación de permisos entre perfil "Organizador" y "Usuario" gestionado a través de perfiles en base de datos.
-
-### 2. Gestión de Eventos (📅 Parcialmente Implementado)
-* **CRUD de Eventos (Implementado):** Los Organizadores pueden crear, actualizar y eliminar eventos (título, descripción, lugar) almacenados en tiempo real en la nube.
-* Agregar ingreso de fecha en formulario para el ingreso de eventos. (⏱️ Pendiente)
-* **Visualización (Implementado):** Los usuarios regulares pueden explorar la lista de eventos comunitarios de forma reactiva.
-* **Participación y Notificaciones (Pendiente):** Desarrollo del sistema para que los usuarios confirmen su asistencia (RSVP) y reciban alertas sobre cambios o recordatorios.
-
-### 3. Interacción Social (💬 Implementado)
-* **Comentarios y Calificaciones:** Módulo para que los asistentes dejen feedback valorativo en eventos finalizados.
-* **Compartir:** Integración de intenciones (Intents) para compartir los eventos en redes sociales externas y mediante correo electrónico.
-
-### 4. Historial (⏱️ Pendiente)
-* **Registro de Actividad:** Vista dedicada para consultar el historial de eventos pasados y la asistencia confirmada de los usuarios.
-
-### 5. Uso de licencias Creative Commons (⏱️ Pendiente)
-
-### 6. Mejora visual de la app (⏱️ Pendiente)
-
-### 7. MockUps de la UI (leer lineamientos (entregables) del proyecto) (⏱️ Pendiente)
 ---
 
+# Descripción de Pantallas
+###  Pantalla de Login
+
+La pantalla de inicio de sesión permite a los usuarios autenticarse dentro de la aplicación.
+
+### Funcionalidades:
+- Inicio de sesión con correo electrónico y contraseña.
+- Registro de nuevos usuarios.
+- Registro como organizador de eventos.
+- Inicio de sesión con Google.
+
+### Objetivo:
+Brindar acceso seguro y rápido a la plataforma.
+
+---
+
+##  Pantalla de Eventos Próximos
+
+Muestra los eventos próximos disponibles para la comunidad.
+
+### Funcionalidades:
+- Visualización de:
+    - Nombre del evento
+    - Fecha
+    - Hora
+    - Lugar
+    - Cantidad de asistentes
+- Confirmación de asistencia.
+- Acceso al detalle del evento.
+- Creación de nuevos eventos.
+
+### Objetivo:
+Permitir a los usuarios descubrir y participar en eventos comunitarios.
+
+---
+
+##  Pantalla de Historial de Eventos
+
+Presenta los eventos finalizados previamente.
+
+### Funcionalidades:
+- Consulta de eventos pasados.
+- Visualización de información básica.
+- Acceso a detalles históricos del evento.
+
+### Objetivo:
+Mantener un registro de actividades realizadas dentro de la comunidad.
+
+---
+
+##  Pantalla de Detalle y Comentarios
+
+Muestra la información completa de un evento específico.
+
+### Funcionalidades:
+- Información detallada del evento.
+- Sección de comentarios.
+- Publicación de comentarios y estrellas cuando finaliza el evento.
+
+### Objetivo:
+Fomentar la interacción y participación entre los usuarios.
+
+---
+
+# 🎨 Diseño UX/UI en Figma
+
+[Ver diseño en Figma](https://www.figma.com/design/BETt7VWfN83mgXWgqXnDLo/PROYECTO-CATEDRA-UDB?node-id=0-1&p=f&t=8g7kBJVOY5gxgZ19-0)
+
+---
+
+# 👥 Integrantes del Equipo
+
+- Carlos David Guevara Martínez
+- Fernando Josue Torres Lara
+- Cristian Omar Pineda Campos
+- Geovany Arturo Pineda Fuentes
+
+---
+
+# 📸 Capturas del Diseño
+
+## Pantalla Login
+![Login](./imagenes/login.png)
+
+## Eventos Próximos
+![Eventos](./imagenes/eventos.png)
+
+## Historial
+![Historial](./imagenes/historial.png)
+
+## Detalle y Comentarios
+![Detalle](./imagenes/detalle.png)
+
+---
 ## 🛠️ Tecnologías Utilizadas
 * **Lenguaje:** Kotlin
 * **Interfaz Gráfica:** Jetpack Compose (Arquitectura MVVM)

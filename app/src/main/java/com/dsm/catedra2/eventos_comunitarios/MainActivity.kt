@@ -6,53 +6,52 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import com.dsm.catedra2.eventos_comunitarios.navigation.AppNavGraph
 import com.dsm.catedra2.eventos_comunitarios.repository.FirebaseAuthRepository
 import com.dsm.catedra2.eventos_comunitarios.repository.MockCommentRepository
 import com.dsm.catedra2.eventos_comunitarios.repository.MockEventRepository
+import com.dsm.catedra2.eventos_comunitarios.ui.permissions.RequestNotificationPermission
 import com.dsm.catedra2.eventos_comunitarios.ui.theme.EventoscomunitariosTheme
-import com.dsm.catedra2.eventos_comunitarios.view.EventDetailScreen
 import com.dsm.catedra2.eventos_comunitarios.view.LoginScreen
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.AuthState
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.AuthViewModel
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.CommentViewModel
 import com.dsm.catedra2.eventos_comunitarios.viewmodel.EventViewModel
 
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val eventRepository = MockEventRepository()
-        val eventViewModel = EventViewModel(eventRepository)
-
-        val commentRepository = MockCommentRepository()
-        val commentViewModel = CommentViewModel(commentRepository)
+        val eventViewModel   = EventViewModel(MockEventRepository(), applicationContext)
+        val commentViewModel = CommentViewModel(MockCommentRepository())
 
         val authRepository = FirebaseAuthRepository()
-        val authViewModel = AuthViewModel(authRepository)
+        val authViewModel  = AuthViewModel(authRepository)
 
-        // Verifica si ya hay un token o sesión guardada en el dispositivo
         authViewModel.checkSession()
 
         setContent {
             EventoscomunitariosTheme {
+
+                RequestNotificationPermission()
+
                 val authState by authViewModel.authState.collectAsState()
 
                 when (val state = authState) {
                     is AuthState.Authenticated -> {
-                        EventDetailScreen(
-                            viewModel = eventViewModel,
+                        AppNavGraph(
+                            eventViewModel   = eventViewModel,
                             commentViewModel = commentViewModel,
-                            currentUserId = state.userId,
+                            currentUserId    = state.userId,
                             currentUserEmail = state.email,
-                            currentUserRole = state.role, // Le pasamos el rol
-                            onLogoutClick = { authViewModel.logout() }
+                            currentUserRole  = state.role,
+                            onLogoutClick    = { authViewModel.logout() }
                         )
                     }
                     else -> {
                         LoginScreen(
-                            viewModel = authViewModel,
+                            viewModel      = authViewModel,
                             onLoginSuccess = { }
                         )
                     }
