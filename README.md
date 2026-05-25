@@ -85,16 +85,16 @@ Fomentar la interacción y participación entre los usuarios.
 # 📸 Capturas del Diseño
 
 ## Pantalla Login
-![Login](./imagenes/login.png)
+![Login](.imagenes/login.png)
 
 ## Eventos Próximos
-![Eventos](./imagenes/eventos.png)
+![Eventos](.imagenes/eventos.png)
 
 ## Historial
-![Historial](./imagenes/historial.png)
+![Historial](.imagenes/historial.png)
 
 ## Detalle y Comentarios
-![Detalle](./imagenes/detalle.png)
+![Detalle](.imagenes/detalle.png)
 
 ---
 ## 🛠️ Tecnologías Utilizadas
